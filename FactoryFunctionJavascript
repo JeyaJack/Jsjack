@@ -1,0 +1,57 @@
+export    default function  buildCreateBuisness ({Id, sanitize,makesource, md5}){
+// returns a function
+    return function createBusiness({
+
+        businessName,
+        businessType,
+        sells,
+        establishedDate,
+        phone,
+        mobile,
+        fax,
+        email,
+        website,
+        address,
+        id,
+        createdOn,
+        lastModifiedOn,
+        reviews
+
+    }= {}){
+
+        //<< All Validations should start here>>
+        if (!businessName){
+            throw new Error("Business Name should be present");
+        }
+        if (businessName.length < 3){
+            throw new Error("Business name should be atleast of three charcters");
+        }
+        if (businessName.length > 60){
+            throw new Error("Business name should be less than 60 charcters");
+        }
+// the returning function returns the object.
+// using closure to create the values for creating this object.
+
+        return Object.freeze({
+            getBusinessName: () => businessName,
+            getSells: () => sells,
+            getBusinessType: () => businessType,
+            getEstablishedDate : () => establishedDate,
+            getPhone: () => phone,
+            getMobile:()=> mobile,
+            getFax:()=> fax,
+            getEmail:()=>email,
+            getWebsite:()=>website,
+            getAddress:()=>address,
+            getId:()=>id,
+            getCreatedOn:()=>createdOn,
+            getLastModifiedOn:()=>lastModifiedOn,
+            getReviews:()=>reviews
+          
+          })
+
+
+    }
+
+
+}
