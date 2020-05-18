@@ -31,6 +31,7 @@ export    default function  buildCreateBuisness ({Id, sanitize,makesource, md5})
         }
 // the returning function returns the object.
 // using closure to create the values for creating this object.
+// object freeze is used to make sure consumer prg does not addd any new properties to the object
 
         return Object.freeze({
             getBusinessName: () => businessName,
